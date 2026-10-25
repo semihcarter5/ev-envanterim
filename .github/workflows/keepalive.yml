@@ -1,0 +1,25 @@
+name: Supabase keepalive
+
+# Ücretsiz Supabase projeleri bir hafta hareketsiz kalırsa duraklatılır.
+# Bu görev haftada bir veritabanına küçük bir istek atar.
+# Kendi kopyanda: Settings > Secrets and variables > Actions > Variables
+# altına SUPABASE_URL ve SUPABASE_PUBLISHABLE_KEY ekle.
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping database
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          test -n "$SUPABASE_URL" || { echo "SUPABASE_URL tanımlı değil"; exit 1; }
+          curl -fsS "$SUPABASE_URL/rest/v1/scan_usage?select=day&limit=1" \
+            -H "apikey: $SUPABASE_PUBLISHABLE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_PUBLISHABLE_KEY"
