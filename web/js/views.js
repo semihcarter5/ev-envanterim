@@ -1,4 +1,5 @@
 // Ekranlar: her biri durumu alır, güvenli HTML döner. Olaylar main.js'te toplanır.
+import { GOOGLE_LOGIN } from './config.js';
 import { html, raw, icons, CATEGORIES, catLabel, expiryStatus, daysUntil, formatMonthYear, formatDay, timeAgo, queryTokens, matches, norm } from './lib.js';
 
 const tabs = (active) => html`
@@ -31,7 +32,7 @@ export function loginView(S) {
   const signup = S.authMode === 'signup';
   return html`
 <main class="login">
-  <div class="logo">${icons.home}</div>
+  <img class="logo" src="icons/icon.svg" alt="Ev Envanterim" width="64" height="64">
   <h1>Evindeki her şey, nerede olduğuyla birlikte.</h1>
   <p class="lead">Gıda, ilaç ve eşyalarını kaydet. Yerini bir fotoğrafla ya da kısa bir notla yaz.</p>
   ${S.authMsg && html`<div class="${S.authMsgKind === 'ok' ? 'ok' : 'err'}" role="alert" style="margin-left:0;margin-right:0">${S.authMsg}</div>`}
@@ -45,7 +46,7 @@ export function loginView(S) {
     <button class="link" type="button" data-action="auth-mode" style="justify-content:center">${signup ? 'Zaten hesabın var mı? Giriş yap' : 'Hesabın yok mu? Kayıt ol'}</button>
   </form>`}
   <div class="actions-bottom">
-    <button class="btn secondary" data-action="google">${icons.user}<span>Google ile devam et</span></button>
+    ${GOOGLE_LOGIN && html`<button class="btn secondary" data-action="google">${icons.user}<span>Google ile devam et</span></button>`}
     ${!S.emailOpen && html`<button class="btn" data-action="email-open">${icons.mail}<span>E-posta ile devam et</span></button>`}
     <p class="fine">Verilerin yalnızca sana aittir. Devam edersen kullanım şartlarını kabul edersin.</p>
   </div>

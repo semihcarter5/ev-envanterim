@@ -248,7 +248,7 @@ document.addEventListener('submit', async (ev) => {
       btn.disabled = true;
       if (S.authMode === 'signup') {
         const r = await api.signUpEmail(email, pw);
-        if (!r.session) { S.authMsg = 'Hesabın oluşturuldu. E-postana gelen bağlantıya dokunarak doğrula, sonra giriş yap.'; S.authMsgKind = 'ok'; S.authMode = 'signin'; render(); }
+        if (!r.session) { S.authMsg = 'Hesabın oluşturuldu. E-postana gelen bağlantıya dokunarak doğrula. Sonra bu sayfada e-posta ve şifrenle giriş yap.'; S.authMsgKind = 'ok'; S.authMode = 'signin'; render(); }
       } else await api.signInEmail(email, pw);
     } else if (kind === 'search') {
       const q = String(fd.get('q')).trim();
