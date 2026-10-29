@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/logo-horizontal.svg" alt="Ev Envanterim" height="72"></p>
+
 # Ev Envanterim
 
 Evdeki ürünleri (gıda, ilaç, eşya) kamerayla tarayıp yapay zekâyla kategorilere ayıran ve **nereye koyduğunu unutmamanı** sağlayan, mobil uyumlu, ücretsiz ve açık kaynaklı web uygulaması.
@@ -45,3 +47,7 @@ Tarama fonksiyonunun kuralları (oturum, görsel doğrulama, günlük sınır, h
 ## Katkı
 
 [CONTRIBUTING.md](CONTRIBUTING.md) dosyasına bak. Lisans: [MIT](LICENSE).
+
+## Logo
+
+`docs/` klasöründe logonun SVG ve PNG dosyaları var: `logo.svg` (yalnızca işaret), `logo-horizontal.svg` (işaret ve yazı), `app-icon.svg` (uygulama simgesi). Ana renk `#2547D0`, yazı tipi Roboto. Forklarda serbestçe değiştirebilirsin.
